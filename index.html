@@ -17,16 +17,25 @@
 <body>
   <main class="container-fluid">
     <div class="row">
-      <div onclick=mine() class="card">
-        <p>MINE: <span id="dice"></span></p>
+      <div onclick=roll() class="card">
+        <p>Rolls: <span id="dice"></span></p>
       </div>
       <div class="card">
-        <h3>Upgrades</h3>
+        <h3>Click Upgrades</h3>
         <button onclick="buyLuckyDice()">
           <p>Lucky Dice: <span id="lucky dice"></span></p>
         </button>
         <button onclick="buyDiceBox()">
           <p>Dice Boxes: <span id="dice box"></span></p>
+        </button>
+      </div>
+      <div class="card">
+        <h3>Passive Upgrades</h3>
+        <button onclick="buyNat20()">
+          <p>Nat 20's: <span id="nat 20"></span></p>
+        </button>
+        <button onclick="buyDiceTower()">
+          <p>Dice Towers: <span id="dice tower"></span></p>
         </button>
       </div>
     </div>
