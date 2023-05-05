@@ -59,17 +59,36 @@ function roll() {
 // SECTION BUYING CLICK UPGRADES
 function buyLuckyDice() {
   let foundLuckyUpgrade = clickUpgrades.find(u => u.name == 'lucky dice')
-  console.log(foundLuckyUpgrade)
   // @ts-ignore
-  foundLuckyUpgrade.quantity++
+  if (dice >= foundLuckyUpgrade.price) {
+    // @ts-ignore
+    dice -= foundLuckyUpgrade.price
+    // @ts-ignore
+    foundLuckyUpgrade.isBought = true
+    // @ts-ignore
+    foundLuckyUpgrade.quantity++
+    console.log(foundLuckyUpgrade)
+  } else {
+    window.alert('Keep rolling!')
+  }
   drawLuckyUpgrade()
   // console.log('purchased')
 }
 function buyDiceBox() {
   let foundBoxUpgrade = clickUpgrades.find(u => u.name == 'dice box')
-  console.log(foundBoxUpgrade)
   // @ts-ignore
-  foundBoxUpgrade.quantity++
+  if (dice >= foundBoxUpgrade.price) {
+    // @ts-ignore
+    dice -= foundBoxUpgrade.price
+    // @ts-ignore
+    foundBoxUpgrade.isBought = true
+    // @ts-ignore
+    foundBoxUpgrade.quantity++
+    console.log(foundBoxUpgrade)
+  } else {
+    window.alert('Keep rolling!')
+  }
+  // @ts-ignore
   drawBoxUpgrade()
 }
 
