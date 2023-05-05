@@ -1,17 +1,17 @@
 let clickUpgrades = [
   {
     name: 'lucky dice',
-    price: 100,
+    price: 50,
     quantity: 0,
-    multiplier: 1,
-    isBought: false,
+    multiplier: 2,
+    // isBought: false,
   },
   {
     name: 'dice box',
-    price: 400,
+    price: 250,
     quantity: 0,
     multiplier: 10,
-    isBought: false,
+    // isBought: false,
   }
 ];
 
@@ -21,14 +21,14 @@ let automaticUpgrades = [
     price: 600,
     quantity: 0,
     multiplier: 20,
-    isBought: true,
+    isBought: false,
   },
   {
     name: 'dice tower',
     price: 2000,
     quantity: 0,
     multiplier: 40,
-    isBought: true,
+    isBought: false,
   }
 ];
 
@@ -68,6 +68,7 @@ function buyLuckyDice() {
 function buyDiceBox() {
   let foundBoxUpgrade = clickUpgrades.find(u => u.name == 'dice box')
   console.log(foundBoxUpgrade)
+  // @ts-ignore
   foundBoxUpgrade.quantity++
   drawBoxUpgrade()
 }
@@ -76,26 +77,51 @@ function buyDiceBox() {
 
 function buyNat20() {
   let foundNat20Upgrade = automaticUpgrades.find(u => u.name == 'nat 20')
-  foundNat20Upgrade.quantity++
-  // console.log(foundNat20Upgrade)
+  // @ts-ignore
+  if (dice >= foundNat20Upgrade.price) {
+    // @ts-ignore
+    dice -= foundNat20Upgrade.price
+    // @ts-ignore
+    foundNat20Upgrade.isBought = true
+    // @ts-ignore
+    foundNat20Upgrade.quantity++
+    console.log(foundNat20Upgrade)
+  } else {
+    window.alert('Keep rolling!')
+  }
   drawNat20Upgrade()
 }
 function buyDiceTower() {
   let foundDiceTowerUpgrade = automaticUpgrades.find(u => u.name == 'dice tower')
-  foundDiceTowerUpgrade.quantity++
-  // console.log(foundDiceTowerUpgrade)
+  // @ts-ignore
+  if (dice >= foundDiceTowerUpgrade.price) {
+    // @ts-ignore
+    dice -= foundDiceTowerUpgrade.price
+    // @ts-ignore
+    foundDiceTowerUpgrade.isBought = true
+    // @ts-ignore
+    foundDiceTowerUpgrade.quantity++
+    console.log(foundDiceTowerUpgrade)
+  } else {
+    window.alert('Keep rolling!')
+  }
   drawDiceTowerUpgrade()
 }
 
-// function collectAutoUpgrades() {
-//   let foundUpgrades = automaticUpgrades.find(u => u.name == 'nat 20')
+function collectAutoUpgrades() {
+  let foundNatUpgrades = automaticUpgrades.find(u => u.name == 'nat 20')
+  let foundTowerUpgrades = automaticUpgrades.find(u => u.name == 'dice tower')
 
-//   // if (automaticUpgrades.isBought)
-//   // console.log('interval works')
-//   dice += (dice + (automaticUpgrades.quantity *= automaticUpgrades.multiplier))
-//   drawDice()
+  // if (automaticUpgrades.isBought)
+  // console.log('interval works')
+  // @ts-ignore
+  dice += (foundNatUpgrades.quantity * foundNatUpgrades.multiplier)
+  // @ts-ignore
+  dice += (foundTowerUpgrades.quantity * foundTowerUpgrades.multiplier)
+  // console.log('updating dice', dice)
+  drawDice()
 
-// }
+}
 
 // SECTION DRAW FUNCTIONS
 
@@ -115,10 +141,12 @@ function drawBoxUpgrade() {
 }
 function drawNat20Upgrade() {
   let foundUpgrades = automaticUpgrades.find(u => u.name == 'nat 20')
+  // @ts-ignore
   document.getElementById("nat 20").innerText = foundUpgrades.quantity
 }
 function drawDiceTowerUpgrade() {
   let foundUpgrades = automaticUpgrades.find(u => u.name == 'dice tower')
+  // @ts-ignore
   document.getElementById("dice tower").innerText = foundUpgrades.quantity
 }
 
