@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,46 +10,85 @@
     integrity='sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD' crossorigin='anonymous'>
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css">
+  <link href="https://fonts.cdnfonts.com/css/luminari" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 
+<style>
+  body.debug .container,
+  body.debug .container-fluid {
+    outline: 2px double blue;
+    outline-offset: -2px;
+  }
 
-<body>
-  <main class="container-fluid">
-    <div class="row">
-      <div class="col-6">
-        <div onclick=roll() class="card border border-dark">
-          <p>Rolls: <span id="dice"></span></p>
-        </div>
+  body.debug .row {
+    outline: 2px dashed red;
+    outline-offset: -2px;
+  }
+
+  body.debug [class*="col-"] {
+    outline: 2px dotted forestgreen;
+    outline-offset: -3px;
+  }
+</style>
+
+<body class="debug">
+  <header class="row">
+    <div class="col-12 text-center">
+      <h1>DICE MINER</h1>
+    </div>
+
+  </header>
+  <div class="row align-content-center">
+    <!-- <div class="col-3"></div> -->
+    <div class="col-12 d-flex justify-content-center">
+      <div onclick="roll()"><img src="assets/dice.gif" alt="">
       </div>
     </div>
-    <section class="row">
-      <div class="col-3 d-flex justify-content-center">
-        <div class="card">
-          <h3>Click Upgrades</h3>
-          <button onclick="buyLuckyDice()">
-            <p>Lucky Dice: <span id="lucky dice"></span></p>
-          </button>
-          <button onclick="buyDiceBox()">
-            <p>Dice Boxes: <span id="dice box"></span></p>
-          </button>
+    <main class="container-fluid">
+      <div class="row align-content-center">
+        <div class="col-12 d-flex justify-content-center">
+          <h3>Rolls: <span id="dice"></span></h3>
         </div>
       </div>
-    </section>
-    <section class="row">
-      <div class="col-3 d-flex justify-content-center">
-        <div class="card">
-          <h3>Passive Upgrades</h3>
-          <button onclick="buyNat20()">
-            <p>Nat 20's: <span id="nat 20"></span></p>
-          </button>
-          <button onclick="buyDiceTower()">
-            <p>Dice Towers: <span id="dice tower"></span></p>
-          </button>
+      <!-- <div onclick=roll() class="card border border-dark text-center"> -->
+      <!-- </div> -->
+      <!-- <div class="col-3"></div> -->
+  </div>
+  <!-- SECTION UPGRADE BUTTONS -->
+  <section class="row align-content-center">
+    <div class="col-6">
+      <section class="row">
+        <div class="col-6 d-flex justify-content-center">
+          <div class="card">
+            <h3>Click Upgrades</h3>
+            <button onclick="buyLuckyDice()">
+              <p>Lucky Dice: <span id="lucky dice"></span></p>
+            </button>
+            <button onclick="buyDiceBox()">
+              <p>Dice Boxes: <span id="dice box"></span></p>
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+    <div class="col-6">
+      <section class="row">
+        <div class="col-6 d-flex justify-content-center">
+          <div class="card">
+            <h3>Passive Upgrades</h3>
+            <button onclick="buyNat20()">
+              <p>Nat 20's: <span id="nat 20"></span></p>
+            </button>
+            <button onclick="buyDiceTower()">
+              <p>Dice Towers: <span id="dice tower"></span></p>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
 
   </main>
 

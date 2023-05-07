@@ -47,7 +47,9 @@ function roll() {
   let foundBoxUpgrade = clickUpgrades.find(u => u.name == 'dice box')
   // increase dice count by 1
   dice++
+  // @ts-ignore
   dice == (dice += (foundBoxUpgrade.multiplier * foundBoxUpgrade.quantity))
+  // @ts-ignore
   dice == (dice += (foundLuckyUpgrade.multiplier * foundLuckyUpgrade.quantity))
   // alert(dice)
   console.log('dice')
