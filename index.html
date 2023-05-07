@@ -34,59 +34,56 @@
 </style>
 
 <body class="debug">
-  <header class="row">
+  <header class="row mt-3 pt-3">
     <div class="col-12 text-center">
       <h1>DICE MINER</h1>
     </div>
-
   </header>
   <div class="row align-content-center">
-    <!-- <div class="col-3"></div> -->
     <div class="col-12 d-flex justify-content-center">
       <div onclick="roll()"><img src="assets/dice.gif" alt="">
       </div>
     </div>
     <main class="container-fluid">
-      <div class="row align-content-center">
+      <div class="row align-content-center py-3">
         <div class="col-12 d-flex justify-content-center">
-          <h3>Rolls: <span id="dice"></span></h3>
+          <h3>Dice: <span id="dice"></span></h3>
         </div>
       </div>
-      <!-- <div onclick=roll() class="card border border-dark text-center"> -->
-      <!-- </div> -->
-      <!-- <div class="col-3"></div> -->
+      <div class="row">
+        <div class="col-6">
+          <h4>Click Generation: <span id="click-generation">1</span>
+          </h4>
+        </div>
+
+        <div class="col-6">
+          <h4>Passive Generation: <span id="passive-generation">0</span></h4>
+        </div>
+      </div>
   </div>
   <!-- SECTION UPGRADE BUTTONS -->
   <section class="row align-content-center">
-    <div class="col-6">
-      <section class="row">
-        <div class="col-6 d-flex justify-content-center">
-          <div class="card">
-            <h3>Click Upgrades</h3>
-            <button onclick="buyLuckyDice()">
-              <p>Lucky Dice: <span id="lucky dice"></span></p>
-            </button>
-            <button onclick="buyDiceBox()">
-              <p>Dice Boxes: <span id="dice box"></span></p>
-            </button>
-          </div>
-        </div>
-      </section>
+    <div class="col-6 d-flex justify-content-center">
+      <div class="card">
+        <h3>Click Upgrades</h3>
+        <button onclick="buyClickUpgrade('lucky dice')">
+          <p>Lucky Dice: <span id="lucky dice">0</span></p>
+        </button>
+        <button onclick="buyClickUpgrade('dice box')">
+          <p>Dice Boxes: <span id="dice box">0</span></p>
+        </button>
+      </div>
     </div>
-    <div class="col-6">
-      <section class="row">
-        <div class="col-6 d-flex justify-content-center">
-          <div class="card">
-            <h3>Passive Upgrades</h3>
-            <button onclick="buyNat20()">
-              <p>Nat 20's: <span id="nat 20"></span></p>
-            </button>
-            <button onclick="buyDiceTower()">
-              <p>Dice Towers: <span id="dice tower"></span></p>
-            </button>
-          </div>
-        </div>
-      </section>
+    <div class="col-6 d-flex justify-content-center">
+      <div class="card">
+        <h3>Passive Upgrades</h3>
+        <button onclick="buyPassiveUpgrade('nat 20')">
+          <p>Nat 20's: <span id="nat 20">0</span></p>
+        </button>
+        <button onclick="buyPassiveUpgrade('dice tower')">
+          <p>Dice Towers: <span id="dice tower">0</span></p>
+        </button>
+      </div>
     </div>
   </section>
 

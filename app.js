@@ -1,7 +1,7 @@
 let clickUpgrades = [
   {
     name: 'lucky dice',
-    price: 50,
+    price: 30,
     quantity: 0,
     multiplier: 2,
     // isBought: false,
@@ -27,7 +27,7 @@ let automaticUpgrades = [
     name: 'dice tower',
     price: 2000,
     quantity: 0,
-    multiplier: 40,
+    multiplier: 100,
     isBought: false,
   }
 ];
@@ -35,11 +35,8 @@ let automaticUpgrades = [
 
 
 let dice = 0
-// let diceStrength = 0
-
-
-
-// dice = (dice.quantity + (upgradeQuantity * upgradeMultiplier))
+let diceStrength = 1
+let autoStrength = 0
 
 // SECTION MINING & ROLLS(MONEYS)
 function roll() {
@@ -59,75 +56,43 @@ function roll() {
 
 
 // SECTION BUYING CLICK UPGRADES
-function buyLuckyDice() {
-  let foundLuckyUpgrade = clickUpgrades.find(u => u.name == 'lucky dice')
-  // @ts-ignore
-  if (dice >= foundLuckyUpgrade.price) {
-    // @ts-ignore
-    dice -= foundLuckyUpgrade.price
-    // @ts-ignore
-    foundLuckyUpgrade.isBought = true
-    // @ts-ignore
-    foundLuckyUpgrade.quantity++
-    console.log(foundLuckyUpgrade)
+function buyClickUpgrade(name) {
+  let buy = clickUpgrades.find(d => d.name == name)
+  if (dice >= buy.price) {
+    dice -= buy.price
+    buy.quantity++
+    buy.price += buy.price
+    diceStrength += buy.multiplier
+    buy.isBought = true
+    console.log(buy)
+    let diceClicker = document.getElementById('click-generation')
+    diceClicker.innerText = diceStrength
   } else {
     window.alert('Keep rolling!')
   }
   drawLuckyUpgrade()
-  // console.log('purchased')
-}
-function buyDiceBox() {
-  let foundBoxUpgrade = clickUpgrades.find(u => u.name == 'dice box')
-  // @ts-ignore
-  if (dice >= foundBoxUpgrade.price) {
-    // @ts-ignore
-    dice -= foundBoxUpgrade.price
-    // @ts-ignore
-    foundBoxUpgrade.isBought = true
-    // @ts-ignore
-    foundBoxUpgrade.quantity++
-    console.log(foundBoxUpgrade)
-  } else {
-    window.alert('Keep rolling!')
-  }
-  // @ts-ignore
   drawBoxUpgrade()
 }
 
-// SECTION BUYING PASSIVE UPGRADES
-
-function buyNat20() {
-  let foundNat20Upgrade = automaticUpgrades.find(u => u.name == 'nat 20')
-  // @ts-ignore
-  if (dice >= foundNat20Upgrade.price) {
-    // @ts-ignore
-    dice -= foundNat20Upgrade.price
-    // @ts-ignore
-    foundNat20Upgrade.isBought = true
-    // @ts-ignore
-    foundNat20Upgrade.quantity++
-    console.log(foundNat20Upgrade)
-  } else {
-    window.alert('Keep rolling!')
-  }
-  drawNat20Upgrade()
-}
-function buyDiceTower() {
-  let foundDiceTowerUpgrade = automaticUpgrades.find(u => u.name == 'dice tower')
-  // @ts-ignore
-  if (dice >= foundDiceTowerUpgrade.price) {
-    // @ts-ignore
-    dice -= foundDiceTowerUpgrade.price
-    // @ts-ignore
-    foundDiceTowerUpgrade.isBought = true
-    // @ts-ignore
-    foundDiceTowerUpgrade.quantity++
-    console.log(foundDiceTowerUpgrade)
+function buyPassiveUpgrade(name) {
+  let auto = automaticUpgrades.find(p => p.name == name)
+  if (dice >= auto.price) {
+    dice -= auto.price
+    auto.quantity++
+    auto.price += auto.price
+    autoStrength += auto.multiplier
+    auto.isBought = true
+    console.log(auto)
+    let diceAuto = document.getElementById('passive-generation')
+    diceAuto.innerText = autoStrength
   } else {
     window.alert('Keep rolling!')
   }
   drawDiceTowerUpgrade()
+  drawNat20Upgrade()
 }
+
+
 
 function collectAutoUpgrades() {
   let foundNatUpgrades = automaticUpgrades.find(u => u.name == 'nat 20')
@@ -154,10 +119,12 @@ function drawDice() {
 }
 function drawLuckyUpgrade() {
   let foundUpgrades = clickUpgrades.find(u => u.name == 'lucky dice')
+  // @ts-ignore
   document.getElementById("lucky dice").innerText = foundUpgrades.quantity
 }
 function drawBoxUpgrade() {
   let foundUpgrades = clickUpgrades.find(u => u.name == 'dice box')
+  // @ts-ignore
   document.getElementById("dice box").innerText = foundUpgrades.quantity
 }
 function drawNat20Upgrade() {
@@ -170,13 +137,20 @@ function drawDiceTowerUpgrade() {
   // @ts-ignore
   document.getElementById("dice tower").innerText = foundUpgrades.quantity
 }
+function clickGeneration() {
+  let foundUpgradeLuckyDice = clickUpgrades.find(u => u.name == 'lucky dice')
+  let foundUpgradeDiceBox = clickUpgrades.find(u => u.name == 'dice box')
+  // @ts-ignore
+  document.getElementById("click-generation").innerText = (diceStrength = ((foundUpgradeLuckyDice.quantity * foundUpgradeLuckyDice.multiplier)) + (foundUpgradeDiceBox.quantity * foundUpgradeDiceBox.multiplier))
+
+}
 
 // SECTION INTERVAL FOR AUTOMATIC UPGRADES
 setInterval(collectAutoUpgrades, 3000)
 
 // SECTION DRAW FUNCTIONS ON OPENING
-drawNat20Upgrade()
-drawDiceTowerUpgrade()
-drawBoxUpgrade()
-drawLuckyUpgrade()
+
+// drawClickUpgrade()
+// drawBoxUpgrade()
+// drawLuckyUpgrade()
 drawDice()
