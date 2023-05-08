@@ -4,14 +4,14 @@ let clickUpgrades = [
     price: 30,
     quantity: 0,
     multiplier: 2,
-    // isBought: false,
+    isBought: false,
   },
   {
     name: 'dice box',
     price: 250,
     quantity: 0,
     multiplier: 10,
-    // isBought: false,
+    isBought: false,
   }
 ];
 
@@ -81,12 +81,10 @@ function buyClickUpgrade(name) {
   } else {
     window.alert('Keep rolling!')
   }
-  // drawLuckyUpgrade()
   drawLuckyBonus()
   populateLuckyBonus()
   drawBoxBonus()
   populateBoxBonus()
-  // drawBoxUpgrade()
 }
 
 function buyPassiveUpgrade(name) {
@@ -113,9 +111,7 @@ function buyPassiveUpgrade(name) {
   } else {
     window.alert('Keep rolling!')
   }
-  // drawDiceTowerUpgrade()
   drawTowerBonus()
-  // drawNat20Upgrade()
   drawNat20Bonus()
   populateNat20()
   populateTower()
@@ -126,8 +122,6 @@ function buyPassiveUpgrade(name) {
 function collectAutoUpgrades() {
   let foundNatUpgrades = automaticUpgrades.find(u => u.name == 'nat 20')
   let foundTowerUpgrades = automaticUpgrades.find(u => u.name == 'dice tower')
-
-  // if (automaticUpgrades.isBought)
   // console.log('interval works')
   // @ts-ignore
   dice += (foundNatUpgrades.quantity * foundNatUpgrades.multiplier)
@@ -141,17 +135,10 @@ function collectAutoUpgrades() {
 // SECTION DRAW FUNCTIONS
 
 function drawDice() {
-  // let foundLuckyUpgrade = clickUpgrades.find(u => u.name == 'lucky dice')
   // @ts-ignore
   document.getElementById("dice").innerText = dice
-  // diceElem.innerText = dice.toString()
 }
 // SECTION CLICK FUNCTIONS
-// function drawLuckyUpgrade() {
-//   let foundUpgrades = clickUpgrades.find(u => u.name == 'lucky dice')
-//   // @ts-ignore
-//   document.getElementById("lucky dice").innerText = foundUpgrades.quantity
-// }
 function drawLuckyBonus() {
   let luckyBonus = clickUpgrades.find(l => l.name == 'lucky dice')
   // @ts-ignore
@@ -160,16 +147,14 @@ function drawLuckyBonus() {
 function populateLuckyBonus() {
   let lucky = clickUpgrades.find(c => c.name == 'lucky dice')
   let luckyMult = document.getElementById('lucky-mult')
+  // @ts-ignore
   luckyMult.innerText = lucky.quantity * lucky.multiplier
   let luckyBought = document.getElementById('lucky-bonus')
+  // @ts-ignore
   luckyBought.innerText = lucky.quantity
 
 }
-// function drawBoxUpgrade() {
-//   let foundUpgrades = clickUpgrades.find(u => u.name == 'dice box')
-//   // @ts-ignore
-//   document.getElementById("dice box").innerText = foundUpgrades.quantity
-// }
+
 function drawBoxBonus() {
   let boxBonus = clickUpgrades.find(b => b.name == 'dice box')
   // @ts-ignore
@@ -178,8 +163,10 @@ function drawBoxBonus() {
 function populateBoxBonus() {
   let box = clickUpgrades.find(b => b.name == 'dice box')
   let boxMult = document.getElementById('box-mult')
+  // @ts-ignore
   boxMult.innerText = box.quantity * box.multiplier
   let boxBought = document.getElementById('box-bonus')
+  // @ts-ignore
   boxBought.innerText = box.quantity
 }
 
@@ -191,11 +178,6 @@ function clickGeneration() {
 
 }
 // SECTION PASSIVE FUNCTIONS
-// function drawNat20Upgrade() {
-//   let foundUpgrades = automaticUpgrades.find(u => u.name == 'nat 20')
-//   // @ts-ignore
-//   document.getElementById("nat 20").innerText = foundUpgrades.quantity
-// }
 function drawNat20Bonus() {
   let natBonus = automaticUpgrades.find(n => n.name == 'nat 20')
   // @ts-ignore
@@ -204,23 +186,22 @@ function drawNat20Bonus() {
 function populateNat20() {
   let natural = automaticUpgrades.find(n => n.name == 'nat 20')
   let naturalMult = document.getElementById('nat-mult')
+  // @ts-ignore
   naturalMult.innerText = natural.quantity * natural.multiplier
   let natBought = document.getElementById('nat-20-bonus')
+  // @ts-ignore
   natBought.innerText = natural.quantity
 }
 function populateTower() {
   let tower = automaticUpgrades.find(t => t.name == 'dice tower')
   let towerMult = document.getElementById('tower-mult')
+  // @ts-ignore
   towerMult.innerText = tower.quantity * tower.multiplier
   let towerBought = document.getElementById('tower-bonus')
+  // @ts-ignore
   towerBought.innerText = tower.quantity
 }
 
-// function drawDiceTowerUpgrade() {
-//   let foundUpgrades = automaticUpgrades.find(u => u.name == 'dice tower')
-//   // @ts-ignore
-//   document.getElementById("dice tower").innerText = foundUpgrades.quantity
-// }
 function drawTowerBonus() {
   let towerUpgrade = automaticUpgrades.find(t => t.name == 'dice tower')
   // @ts-ignore
@@ -231,10 +212,6 @@ function drawTowerBonus() {
 setInterval(collectAutoUpgrades, 3000)
 
 // SECTION DRAW FUNCTIONS ON OPENING
-
-// drawClickUpgrade()
-// drawBoxUpgrade()
-// drawLuckyUpgrade()
 drawTowerBonus()
 drawNat20Bonus()
 drawBoxBonus()
