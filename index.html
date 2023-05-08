@@ -51,38 +51,61 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-6 my-2 text-center">
           <h4>Click Generation: <span id="click-generation">1</span>
           </h4>
         </div>
 
-        <div class="col-6">
-          <h4>Passive Generation: <span id="passive-generation">0</span></h4>
+        <div class="col-6 my-2 text-center">
+          <h4>Passive Generation: <span id="passive-generation">0</span> /3s</h4>
         </div>
       </div>
   </div>
-  <!-- SECTION UPGRADE BUTTONS -->
-  <section class="row align-content-center">
-    <div class="col-6 d-flex justify-content-center">
+  <!-- SECTION Click Upgrades -->
+  <section class="row justify-content-center">
+    <div class="col-3 d-flex justify-content-center p-2">
       <div class="card">
         <h3>Click Upgrades</h3>
         <button onclick="buyClickUpgrade('lucky dice')">
-          <p>Lucky Dice: <span id="lucky dice">0</span></p>
+          <h5>Lucky Dice Price: </h5>
+          <h5 id='lucky dice'>30</h5>
         </button>
         <button onclick="buyClickUpgrade('dice box')">
-          <p>Dice Boxes: <span id="dice box">0</span></p>
+          <h5>Dice Box Price:</h5>
+          <h5 id="dice box">250</h5>
         </button>
       </div>
     </div>
-    <div class="col-6 d-flex justify-content-center">
+    <div class="col-3 p-2 text-center">
+      <div class="card">
+        <h3>Click Bonus</h3>
+        <h5>Lucky Dice Bonus</h5>
+        <h5>Quantity = <span id="lucky-bonus"></span> Multiplier = <span id="lucky-mult"></span></h5>
+        <h5> Dice Box Bonus</h5>
+        <h5> Quantity = <span id="box-bonus"></span> Multiplier = <span id="box-mult"></span></h5>
+      </div>
+    </div>
+    <!-- SECTION Auto Upgrades -->
+    <div class="col-3 d-flex justify-content-center p-2">
       <div class="card">
         <h3>Passive Upgrades</h3>
         <button onclick="buyPassiveUpgrade('nat 20')">
-          <p>Nat 20's: <span id="nat 20">0</span></p>
+          <h5>Nat 20 price:</h5>
+          <h5 id="nat 20">600</h5>
         </button>
         <button onclick="buyPassiveUpgrade('dice tower')">
-          <p>Dice Towers: <span id="dice tower">0</span></p>
+          <h5>Dice Tower Price:</h5>
+          <h5 id="dice tower">2000</h5>
         </button>
+      </div>
+    </div>
+    <div class="col-3 p-2 text-center">
+      <div class="card">
+        <h3>Passive Bonus</h3>
+        <h5> Nat 20:</h5>
+        <h5>Quantity = <span id="nat-20-bonus">0</span> Multiplier = <span id="nat-mult">0</span></h5>
+        <h5> Dice Tower:</h5>
+        <h5>Quantity = <span id="tower-bonus">0</span> Multiplier = <span id="tower-mult"></span></h5>
       </div>
     </div>
   </section>
