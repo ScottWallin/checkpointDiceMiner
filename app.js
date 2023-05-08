@@ -5,6 +5,7 @@ let clickUpgrades = [
     quantity: 0,
     multiplier: 2,
     isBought: false,
+    type: 'click'
   },
   {
     name: 'dice box',
@@ -22,6 +23,7 @@ let automaticUpgrades = [
     quantity: 0,
     multiplier: 20,
     isBought: false,
+    type: 'auto'
   },
   {
     name: 'dice tower',
@@ -133,6 +135,13 @@ function collectAutoUpgrades() {
 }
 
 // SECTION DRAW FUNCTIONS
+
+// STUB LESSON FROM SAM TO PRACTICE
+// function draw(name){
+// let upgrade = clickUpgrades.find(u=>u.name == name)
+// let upgradeElem = document.getElementById(`${upgrade.name}-bonus`)
+// upgradeElem?.innerText[Symbol]...arguments[Symbol]..
+// }
 
 function drawDice() {
   // @ts-ignore
